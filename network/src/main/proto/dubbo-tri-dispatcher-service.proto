@@ -1,0 +1,30 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package = "io.polyaxis.network.dispatcher";
+option java_outer_classname = "ServiceProto";
+option java_generate_equals_and_hash = true;
+
+import "google/protobuf/any.proto";
+import "google/protobuf/descriptor.proto";
+
+service DispatcherService {
+  rpc registerBroker(BrokerRegisterReq) returns (BrokerRegisterResp);
+  rpc refreshBroker(BrokerRefreshReq) returns (BrokerRefreshResp);
+}
+
+message BrokerRegisterReq {
+  bool force_update = 1;
+  map<string, google.protobuf.Any> plugins = 2;
+}
+
+message BrokerRegisterResp {
+}
+
+message BrokerRefreshReq {
+  bool force_update = 1;
+  map<string, google.protobuf.Any> plugins = 2;
+}
+
+message BrokerRefreshResp {
+}

@@ -1,0 +1,38 @@
+[versions]
+quarkus = "3.24.1"
+langchain4j = "1.0.2"
+lettuce = "6.7.1.RELEASE"
+dubbo = "3.3.4"
+protobuf = "4.31.1"
+cassandra = "1.2.0"
+
+[libraries]
+### quarkus bom
+quarkus = { module = "io.quarkus.platform:quarkus-bom", version.ref = "quarkus" }
+### quarkus internal
+quarkus-arc = { module = "io.quarkus:quarkus-arc" }
+quarkus-vertx = { module = "io.quarkus:quarkus-vertx" }
+quarkus-container-image-docker = { module = "io.quarkus:quarkus-container-image-docker" }
+### quarkus reactive web
+quarkus-rest-jackson = { module = "io.quarkus:quarkus-rest-jackson" }
+quarkus-reactive-routes = { module = "io.quarkus:quarkus-reactive-routes" }
+### quarkus rds
+quarkus-redis-client = { module = "io.quarkus:quarkus-redis-client" }
+quarkus-mongodb-panache = { module = "io.quarkus:quarkus-mongodb-panache" }
+quarkus-reactive-pg-client = { module = "io.quarkus:quarkus-reactive-pg-client" }
+quarkus-hibernate-reactive-panache = { module = "io.quarkus:quarkus-hibernate-reactive-panache" }
+quarkus-cassandra-client = { module = "com.datastax.oss.quarkus:cassandra-quarkus-client", version.ref = "cassandra" }
+### quarkus security
+quarkus-security-jpa-reactive = { module = "io.quarkus:quarkus-security-jpa-reactive" }
+### langchain4j
+quarkus-langchain4j-core = { module = "io.quarkiverse.langchain4j:quarkus-langchain4j-core", version.ref = "langchain4j" }
+quarkus-langchain4j-openai = { module = "io.quarkiverse.langchain4j:quarkus-langchain4j-openai", version.ref = "langchain4j" }
+quarkus-langchain4j-milvus = { module = "io.quarkiverse.langchain4j:quarkus-langchain4j-milvus", version.ref = "langchain4j" }
+### lettuce
+lettuce-core = { module = "io.lettuce:lettuce-core", version.ref = "lettuce" }
+### dubbo
+dubbo = { module = "org.apache.dubbo:dubbo", version.ref = "dubbo" }
+protobuf-java = { module = "com.google.protobuf:protobuf-java", version.ref = "protobuf" }
+### test
+quarkus-junit5 = { module = "io.quarkus:quarkus-junit5" }
+rest-assured = { module = "io.rest-assured:rest-assured" }

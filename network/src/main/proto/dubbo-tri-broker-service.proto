@@ -1,0 +1,37 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package = "io.polyaxis.network.broker";
+option java_outer_classname = "ServiceProto";
+option java_generate_equals_and_hash = true;
+
+import "google/protobuf/any.proto";
+import "google/protobuf/descriptor.proto";
+
+service BrokerService {
+  rpc setPlugin(BrokerPluginSettingReq) returns (BrokerPluginSettingResp);
+  rpc invokeCapability(BrokerInvokeReq) returns (stream BrokerInvokeResp);
+}
+
+message BrokerPluginSettingReq {
+  string plugin_id = 1;
+  map<string, google.protobuf.Any> settings = 2;
+}
+
+message BrokerPluginSettingResp {
+}
+
+message BrokerInvokeReq {
+  Metadata metadata = 1;
+  string capability_id = 2;
+  google.protobuf.Any arguments = 3;
+}
+
+message BrokerInvokeResp {
+  google.protobuf.Any ivk_res = 1;
+}
+
+message Metadata {
+  string client_ip = 1;
+  google.protobuf.Any user = 2;
+}

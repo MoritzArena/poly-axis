@@ -1,0 +1,18 @@
+# Garnet is a new remote cache-store from Microsoft Research.
+# garnet GitHub repository:
+# https://github.com/microsoft/garnet/releases
+# garnet DockerHub repository:
+# https://github.com/microsoft/garnet/pkgs/container/garnet
+version: '3.8'
+
+name: garnet
+
+services:
+  garnet:
+    image: ghcr.io/microsoft/garnet
+    ports:
+      - "6379:6379"
+    ulimits:
+      memlock: -1
+    command:
+      - "--lua" # Enable Lua support

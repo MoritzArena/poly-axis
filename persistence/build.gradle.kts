@@ -27,24 +27,15 @@ dependencies {
 }
 // TODO 待解决 单测无法正确加载使用问题
 // TODO 待解决 resources不能正确加载问题
-tasks.withType<JavaCompile> {
-    options.compilerArgs.add("-parameters")
-}
 // Configure test task with system properties as in maven-surefire-plugin configuration
 tasks.test {
-    systemProperty("java.util.logging.manager", "org.jboss.logmanager.LogManager")
-    systemProperty("maven.home", System.getenv("MAVEN_HOME") ?: "")
+    useJUnitPlatform()
 }
-tasks.register<Test>("integrationTest") {
-    group = "verification"
-    description = "Run integration tests."
-
-    // Use the test source set or create a new one if needed.
-    testClassesDirs = sourceSets["test"].output.classesDirs
-    classpath = sourceSets["test"].runtimeClasspath
-
-    // Set system properties similar to the Maven configuration.
-    systemProperty("native.image.path", "$buildDir/${project.name}-runner")
+tasks.withType<Test> {
     systemProperty("java.util.logging.manager", "org.jboss.logmanager.LogManager")
-    systemProperty("maven.home", System.getenv("MAVEN_HOME") ?: "")
+}
+
+tasks.withType<JavaCompile> {
+    options.encoding = "UTF-8"
+    options.compilerArgs.add("-parameters")
 }

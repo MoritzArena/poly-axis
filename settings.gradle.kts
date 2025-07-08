@@ -16,8 +16,8 @@ rootProject.name = "poly-axis"
 include("persistence")
 /* ⇢ dubbo & rpc provider */
 include("network")
-/* ⇢ api provider */
-include("api")
+/* ⇢ common provider */
+include("common")
 /* ⇢ quarkus security provider */
 include("security")
 

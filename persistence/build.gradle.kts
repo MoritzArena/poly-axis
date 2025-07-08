@@ -1,6 +1,7 @@
 plugins {
     id("java")
     id("java-library")
+    id("io.quarkus")
 }
 
 /* ⇢ definitions */
@@ -10,11 +11,8 @@ description = "axis-persistence ${project.version} gradle configurations"
 dependencies {
     /* quarkus bom */
     implementation(enforcedPlatform(libs.quarkus))
-    /* quarkus internal */
-    api(libs.quarkus.arc)
-    api(libs.quarkus.vertx)
-    /* quarkus rest & jackson */
-    api(libs.quarkus.rest.jackson)
+    /* internal projects */
+    implementation(project(":common"))
 
     /* quarkus reactive database */
     // implementation(libs.lettuce.core)
@@ -23,7 +21,10 @@ dependencies {
     // implementation(libs.quarkus.cassandra.client)
     implementation(libs.quarkus.reactive.pg.client)
     implementation(libs.quarkus.hibernate.reactive.panache)
+
+    /* test */
     testImplementation(libs.quarkus.junit5)
+    testImplementation(libs.quarkus.test.vertx)
 }
 // TODO 待解决 单测无法正确加载使用问题
 // TODO 待解决 resources不能正确加载问题

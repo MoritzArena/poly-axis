@@ -28,8 +28,10 @@ val dubboCompiler: Configuration by configurations.creating
 
 /* ⇢ dependencies */
 dependencies {
-    // expose dubbo
+    implementation(enforcedPlatform(libs.protobuf.bom))
+    // expose dubbo and its dependencies
     api(libs.dubbo)
+    api(libs.javassist)
     // use default google rpc proto(s)
     api(libs.protobuf.java)
     // used for compiling fat dubbo jar

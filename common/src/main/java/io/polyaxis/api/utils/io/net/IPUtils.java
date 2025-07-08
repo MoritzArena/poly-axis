@@ -11,9 +11,9 @@ import java.util.regex.Pattern;
 /// @author github.com/MoritzArena
 /// @date 2025/07/05
 /// @since 1.0
-public final class IPUtil {
+public final class IPUtils {
     
-    private IPUtil() {
+    private IPUtils() {
     }
     
     public static final boolean PREFER_IPV6_ADDRESSES = Boolean.parseBoolean(
@@ -151,7 +151,7 @@ public final class IPUtil {
         // illegal response
         StringBuilder illegalResponse = new StringBuilder();
         for (String ip : ips) {
-            if (IPUtil.isIP(ip)) {
+            if (IPUtils.isIP(ip)) {
                 continue;
             }
             illegalResponse.append(ip).append(",");

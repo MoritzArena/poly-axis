@@ -54,7 +54,7 @@ public class BrokerDubboClient {
                     .registerBroker(Uni.createFrom().item(BrokerRegisterReq.newBuilder().build()))
                     .subscribe()
                     .with(
-                            res -> LOGGER.info("consumeOneToMany get response: {}", res),
+                            res -> LOGGER.info("consumeOneToMany get response: {}", res.getMessage()),
                             err -> LOGGER.error("consumeOneToMany failed!", err)
                     );
         }

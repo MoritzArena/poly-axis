@@ -32,6 +32,8 @@ final class DispatcherDubboServer {
     /// construct [DispatcherService]s config
     private ServiceConfig<DispatcherService> constructServiceConfig() {
         final ServiceConfig<DispatcherService> serviceConfig = new ServiceConfig<>();
+        serviceConfig.setGroup(DispatcherConstants.DUBBO_SERVICE_GROUP);
+        serviceConfig.setVersion(DispatcherConstants.DUBBO_SERVICE_VERSION);
         serviceConfig.setInterface(DispatcherService.class);
         serviceConfig.setRef(new DispatcherServiceProvider());
         serviceConfig.setRegister(false);

@@ -4,7 +4,7 @@ import io.polyaxis.api.utils.context.EnvironmentUtils;
 import io.polyaxis.api.utils.misc.LoggerScope;
 import io.polyaxis.network.DubboConstants;
 import io.quarkus.runtime.Startup;
-import jakarta.enterprise.context.ApplicationScoped;
+import jakarta.inject.Singleton;
 import org.apache.dubbo.config.ApplicationConfig;
 import org.apache.dubbo.config.bootstrap.DubboBootstrap;
 import org.slf4j.Logger;
@@ -15,7 +15,7 @@ import org.slf4j.Logger;
 /// @date 2025/07/06
 /// @since 1.0
 @Startup
-@ApplicationScoped
+@Singleton
 public class DispatcherDubboWorker {
 
     private static final Logger LOGGER = LoggerScope.DUBBO;
@@ -43,7 +43,6 @@ public class DispatcherDubboWorker {
         // start broker dubbo client and server
         this.start0();
         LOGGER.info("dispatcher dubbo server and client started successfully");
-        System.out.println("dispatcher dubbo server and client started successfully");
     }
 
     public void stop() {

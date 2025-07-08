@@ -19,6 +19,7 @@ message BrokerRegisterReq {
 }
 
 message BrokerRegisterResp {
+  string message = 1;
 }
 
 message BrokerRefreshReq {

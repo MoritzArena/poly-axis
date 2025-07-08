@@ -3,6 +3,19 @@ plugins {
     id("io.quarkus")
 }
 
+repositories {
+    maven {
+        url = uri("https://maven.aliyun.com/repository/public")
+    }
+    maven {
+        url = uri("https://packages.aliyun.com/65442f8f3aaed849b035c821/maven/repo-dubbo-mutiny")
+        credentials {
+            username = "63c4e472b7bea95c53d1625e"
+            password = "SJFkqm-_akW_"
+        }
+    }
+}
+
 /* ⇢ definitions */
 description = "axis-dispatcher ${project.version} gradle configurations"
 

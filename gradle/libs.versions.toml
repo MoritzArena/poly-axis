@@ -2,9 +2,10 @@
 quarkus = "3.24.1"
 langchain4j = "1.0.2"
 lettuce = "6.7.1.RELEASE"
-dubbo = "3.3.4"
+dubbo = "3.4.0.mutiny"
 protobuf = "4.31.1"
 cassandra = "1.2.0"
+mutiny = "2.9.1"
 
 [libraries]
 ### quarkus bom
@@ -31,6 +32,7 @@ quarkus-langchain4j-milvus = { module = "io.quarkiverse.langchain4j:quarkus-lang
 ### lettuce
 lettuce-core = { module = "io.lettuce:lettuce-core", version.ref = "lettuce" }
 ### dubbo
+mutiny = { module = "io.smallrye.reactive:mutiny", version.ref = "mutiny" }
 dubbo = { module = "org.apache.dubbo:dubbo", version.ref = "dubbo" }
 protobuf-java = { module = "com.google.protobuf:protobuf-java", version.ref = "protobuf" }
 ### test

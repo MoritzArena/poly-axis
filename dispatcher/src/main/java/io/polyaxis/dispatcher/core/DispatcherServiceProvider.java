@@ -5,8 +5,7 @@ import io.polyaxis.network.dispatcher.BrokerRefreshResp;
 import io.polyaxis.network.dispatcher.BrokerRegisterReq;
 import io.polyaxis.network.dispatcher.BrokerRegisterResp;
 import io.polyaxis.network.dispatcher.DubboDispatcherServiceTriple;
-
-import java.util.concurrent.CompletableFuture;
+import io.smallrye.mutiny.Uni;
 
 /// Application dispatcher service provider.
 ///
@@ -17,12 +16,12 @@ public class DispatcherServiceProvider
         extends DubboDispatcherServiceTriple.DispatcherServiceImplBase {
 
     @Override
-    public CompletableFuture<BrokerRegisterResp> registerBrokerAsync(BrokerRegisterReq request) {
-        return super.registerBrokerAsync(request);
+    public Uni<BrokerRegisterResp> registerBroker(Uni<BrokerRegisterReq> request) {
+        return Uni.createFrom().item(BrokerRegisterResp.newBuilder().build());
     }
 
     @Override
-    public CompletableFuture<BrokerRefreshResp> refreshBrokerAsync(BrokerRefreshReq request) {
-        return super.refreshBrokerAsync(request);
+    public Uni<BrokerRefreshResp> refreshBroker(Uni<BrokerRefreshReq> request) {
+        return Uni.createFrom().item(BrokerRefreshResp.newBuilder().build());
     }
 }

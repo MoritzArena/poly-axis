@@ -1,7 +1,7 @@
 package io.polyaxis.dispatcher.core;
 
-import com.inovance.agent.network.dispatcher.DispatcherService;
 import io.polyaxis.api.utils.misc.LoggerScope;
+import io.polyaxis.network.dispatcher.DispatcherService;
 import org.apache.dubbo.common.constants.CommonConstants;
 import org.apache.dubbo.config.ProtocolConfig;
 import org.apache.dubbo.config.ServiceConfig;

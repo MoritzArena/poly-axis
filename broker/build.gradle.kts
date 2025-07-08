@@ -1,5 +1,6 @@
 plugins {
     id("java")
+    id("io.quarkus")
 }
 
 repositories {
@@ -19,6 +20,19 @@ repositories {
 description = "axis-broker ${project.version} gradle configurations"
 
 dependencies {
-    testImplementation(platform("org.junit:junit-bom:5.10.0"))
-    testImplementation("org.junit.jupiter:junit-jupiter")
+    /* quarkus bom */
+    implementation(enforcedPlatform(libs.quarkus))
+    /* quarkus reactive web */
+    implementation(libs.quarkus.reactive.routes)
+    /* quarkus langchain4j */
+    implementation(libs.quarkus.langchain4j.core)
+    implementation(libs.quarkus.langchain4j.openai)
+    /* internal projects */
+    implementation(project(":common"))
+    implementation(project(":network")) // for rpc negotiating
+}
+
+/* ⇢ add opens */
+tasks.quarkusDev {
+    jvmArgs.add("--add-opens=java.base/java.lang=ALL-UNNAMED")
 }

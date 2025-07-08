@@ -1,3 +1,6 @@
+import io.quarkus.gradle.tasks.QuarkusDev
+import org.gradle.kotlin.dsl.named
+
 plugins {
     id("java")
     id("io.quarkus")
@@ -28,6 +31,11 @@ dependencies {
     implementation(libs.quarkus.langchain4j.core)
     implementation(libs.quarkus.langchain4j.openai)
     /* internal projects */
-    implementation(project(":api"))
+    implementation(project(":common"))
     implementation(project(":network")) // for rpc negotiating
 }
+
+/* ⇢ add opens */
+//tasks.quarkusDev {
+//    jvmArgs.add("--add-opens=java.base/java.lang=ALL-UNNAMED")
+//}

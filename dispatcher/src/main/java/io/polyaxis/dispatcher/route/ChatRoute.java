@@ -1,4 +1,4 @@
-package io.polyaxis.dispatcher.router;
+package io.polyaxis.dispatcher.route;
 
 import io.smallrye.mutiny.Uni;
 import jakarta.enterprise.context.ApplicationScoped;
@@ -17,9 +17,9 @@ import org.slf4j.LoggerFactory;
 @ApplicationScoped
 @Produces(MediaType.APPLICATION_JSON)
 @Consumes(MediaType.APPLICATION_JSON)
-public class ChatRouter {
+public class ChatRoute {
 
-    private static final Logger LOGGER = LoggerFactory.getLogger(ChatRouter.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(ChatRoute.class);
 
     @GET
     @Path("hello")

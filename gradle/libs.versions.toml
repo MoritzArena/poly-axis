@@ -6,6 +6,8 @@ dubbo = "3.4.0.mutiny"
 protobuf = "4.31.1"
 cassandra = "1.2.0"
 mutiny = "2.9.1"
+javassist = "3.30.2-GA"
+jackson = "2.19.1"
 
 [libraries]
 ### quarkus bom
@@ -25,15 +27,26 @@ quarkus-hibernate-reactive-panache = { module = "io.quarkus:quarkus-hibernate-re
 quarkus-cassandra-client = { module = "com.datastax.oss.quarkus:cassandra-quarkus-client", version.ref = "cassandra" }
 ### quarkus security
 quarkus-security-jpa-reactive = { module = "io.quarkus:quarkus-security-jpa-reactive" }
+### quarkus test
+quarkus-test-vertx = { module = "io.quarkus:quarkus-test-vertx" }
 ### langchain4j
 quarkus-langchain4j-core = { module = "io.quarkiverse.langchain4j:quarkus-langchain4j-core", version.ref = "langchain4j" }
 quarkus-langchain4j-openai = { module = "io.quarkiverse.langchain4j:quarkus-langchain4j-openai", version.ref = "langchain4j" }
 quarkus-langchain4j-milvus = { module = "io.quarkiverse.langchain4j:quarkus-langchain4j-milvus", version.ref = "langchain4j" }
 ### lettuce
 lettuce-core = { module = "io.lettuce:lettuce-core", version.ref = "lettuce" }
+### microprofile
+microprofile-config-api = { module = "org.eclipse.microprofile.config:microprofile-config-api" }
+### jackson layer
+jackson-bom = { module = "com.fasterxml.jackson:jackson-bom", version.ref = "jackson" }
+jackson-annotations = { module = "com.fasterxml.jackson.core:jackson-annotations" }
+jackson-core = { module = "com.fasterxml.jackson.core:jackson-core" }
+jackson-databind = { module = "com.fasterxml.jackson.core:jackson-databind" }
 ### dubbo
-mutiny = { module = "io.smallrye.reactive:mutiny", version.ref = "mutiny" }
 dubbo = { module = "org.apache.dubbo:dubbo", version.ref = "dubbo" }
+mutiny = { module = "io.smallrye.reactive:mutiny", version.ref = "mutiny" }
+javassist = { module = "org.javassist:javassist", version.ref = "javassist" }
+protobuf-bom = { module = "com.google.protobuf:protobuf-bom", version.ref = "protobuf" }
 protobuf-java = { module = "com.google.protobuf:protobuf-java", version.ref = "protobuf" }
 ### test
 quarkus-junit5 = { module = "io.quarkus:quarkus-junit5" }

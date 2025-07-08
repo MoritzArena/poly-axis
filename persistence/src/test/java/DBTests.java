@@ -1,15 +1,25 @@
 import entity.Fruit;
+import io.quarkus.hibernate.reactive.panache.Panache;
+import io.quarkus.test.TestReactiveTransaction;
 import io.quarkus.test.junit.QuarkusTest;
+import io.quarkus.test.vertx.RunOnVertxContext;
+import io.quarkus.test.vertx.UniAsserter;
 import org.junit.jupiter.api.Test;
 
 @QuarkusTest
 public class DBTests {
+
     @Test
-    public void testCreateNewEntity() {
-        var newFruit = new Fruit("watermelon");
-        newFruit.persistAndFlush().subscribe().with(
-                unused -> System.out.println("New fruit created: " + newFruit.name),
-                failure -> System.err.println("Failed to create fruit: " + failure.getMessage())
+    @TestReactiveTransaction // enable Vert.x context
+    void testCreateNewEntity(UniAsserter ua) {
+        ua.execute(() -> // use UniAsserter
+                Panache.withTransaction(() ->
+                        new Fruit("watermelon")
+                                .persistAndFlush()
+                                .invoke(() -> System.out.println("Created watermelon"))
+                                .onFailure().invoke(e -> System.err.println("Failed: " + e))
+                )
         );
+        ua.assertNotEquals(Fruit::count, 0L);
     }
 }

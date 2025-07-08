@@ -1,22 +1,18 @@
-package io.polyaxis.dispatcher.core;
+package io.ployaxis.broker.core;
 
 import io.polyaxis.api.utils.context.EnvironmentUtils;
 import io.polyaxis.api.utils.misc.LoggerScope;
 import io.polyaxis.network.DubboConstants;
-import io.quarkus.runtime.Startup;
-import jakarta.enterprise.context.ApplicationScoped;
 import org.apache.dubbo.config.ApplicationConfig;
 import org.apache.dubbo.config.bootstrap.DubboBootstrap;
 import org.slf4j.Logger;
 
-/// Application dispatcher dubbo worker.
+/// Broker Dubbo Worker.
 ///
 /// @author github.com/MoritzArena
-/// @date 2025/07/06
+/// @date 2025/07/08
 /// @since 1.0
-@Startup
-@ApplicationScoped
-public class DispatcherDubboWorker {
+public class BrokerDubboWorker {
 
     private static final Logger LOGGER = LoggerScope.DUBBO;
 
@@ -25,25 +21,24 @@ public class DispatcherDubboWorker {
 
     private final DubboBootstrap bootstrap;
 
-    private final DispatcherDubboClient dispatcherDubboClient;
+    private final BrokerDubboClient brokerDubboClient;
 
-    private final DispatcherDubboServer dispatcherDubboServer;
+    private final BrokerDubboServer brokerDubboServer;
 
-    public DispatcherDubboWorker() {
+    public BrokerDubboWorker() {
         this.bootstrap = DubboBootstrap.getInstance();
         // init dubbo application config
-        final var appConfig = new ApplicationConfig(DispatcherConstants.DUBBO_APPLICATION_NAME);
+        final var appConfig = new ApplicationConfig(BrokerConstants.DUBBO_APPLICATION_NAME);
         appConfig.setQosEnable(false);
         appConfig.setQosPort(-1);
         appConfig.setQosAcceptForeignIp(false);
         this.bootstrap.application(appConfig);
         // build dubbo client and server
-        this.dispatcherDubboClient = new DispatcherDubboClient(bootstrap, PORT_OFFSET);
-        this.dispatcherDubboServer = new DispatcherDubboServer(bootstrap, this.getPort());
+        this.brokerDubboClient = new BrokerDubboClient(this.bootstrap, PORT_OFFSET);
+        this.brokerDubboServer = new BrokerDubboServer(this.bootstrap, this.getPort());
         // start broker dubbo client and server
         this.start0();
-        LOGGER.info("dispatcher dubbo server and client started successfully");
-        System.out.println("dispatcher dubbo server and client started successfully");
+        LOGGER.info("broker dubbo server and client started successfully");
     }
 
     public void stop() {

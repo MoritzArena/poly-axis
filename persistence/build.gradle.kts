@@ -25,6 +25,7 @@ dependencies {
     /* test */
     testImplementation(libs.quarkus.junit5)
     testImplementation(libs.quarkus.test.vertx)
+    testImplementation(libs.quarkus.test.hibernate.reactive.panache)
 }
 // TODO 待解决 单测无法正确加载使用问题
 // TODO 待解决 resources不能正确加载问题

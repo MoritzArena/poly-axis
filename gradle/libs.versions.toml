@@ -29,6 +29,7 @@ quarkus-cassandra-client = { module = "com.datastax.oss.quarkus:cassandra-quarku
 quarkus-security-jpa-reactive = { module = "io.quarkus:quarkus-security-jpa-reactive" }
 ### quarkus test
 quarkus-test-vertx = { module = "io.quarkus:quarkus-test-vertx" }
+quarkus-test-hibernate-reactive-panache = { module = "io.quarkus:quarkus-test-hibernate-reactive-panache" }
 ### langchain4j
 quarkus-langchain4j-core = { module = "io.quarkiverse.langchain4j:quarkus-langchain4j-core", version.ref = "langchain4j" }
 quarkus-langchain4j-openai = { module = "io.quarkiverse.langchain4j:quarkus-langchain4j-openai", version.ref = "langchain4j" }

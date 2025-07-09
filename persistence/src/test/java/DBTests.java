@@ -1,25 +1,21 @@
 import entity.Fruit;
-import io.quarkus.hibernate.reactive.panache.Panache;
-import io.quarkus.test.TestReactiveTransaction;
+import io.quarkus.test.hibernate.reactive.panache.TransactionalUniAsserter;
 import io.quarkus.test.junit.QuarkusTest;
 import io.quarkus.test.vertx.RunOnVertxContext;
-import io.quarkus.test.vertx.UniAsserter;
+import jakarta.inject.Inject;
 import org.junit.jupiter.api.Test;
+import repository.FruitRepository;
 
 @QuarkusTest
 public class DBTests {
+    @Inject
+    FruitRepository fruitRepository;
 
     @Test
-    @TestReactiveTransaction // enable Vert.x context
-    void testCreateNewEntity(UniAsserter ua) {
-        ua.execute(() -> // use UniAsserter
-                Panache.withTransaction(() ->
-                        new Fruit("watermelon")
-                                .persistAndFlush()
-                                .invoke(() -> System.out.println("Created watermelon"))
-                                .onFailure().invoke(e -> System.err.println("Failed: " + e))
-                )
-        );
-        ua.assertNotEquals(Fruit::count, 0L);
+    @RunOnVertxContext
+    void testCreateNewEntity(TransactionalUniAsserter asserter) {
+        asserter.execute(() -> fruitRepository.persist(new Fruit("watermelon")));
+        asserter.assertEquals(Fruit::count, 4L);
     }
+
 }

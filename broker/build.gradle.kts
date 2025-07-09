@@ -31,8 +31,3 @@ dependencies {
     implementation(project(":common"))
     implementation(project(":network")) // for rpc negotiating
 }
-
-/* ⇢ add opens */
-tasks.quarkusDev {
-    jvmArgs.add("--add-opens=java.base/java.lang=ALL-UNNAMED")
-}

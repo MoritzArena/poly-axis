@@ -1,5 +1,6 @@
 package io.polyaxis.dispatcher.core;
 
+import com.google.protobuf.Descriptors;
 import io.polyaxis.network.dispatcher.BrokerRefreshReq;
 import io.polyaxis.network.dispatcher.BrokerRefreshResp;
 import io.polyaxis.network.dispatcher.BrokerRegisterReq;
@@ -17,7 +18,9 @@ public class DispatcherServiceProvider
 
     @Override
     public Uni<BrokerRegisterResp> registerBroker(Uni<BrokerRegisterReq> request) {
-        return Uni.createFrom().item(BrokerRegisterResp.newBuilder().build());
+        return Uni.createFrom().item(BrokerRegisterResp.newBuilder()
+                .setMessage("Hello World!")
+                .build());
     }
 
     @Override

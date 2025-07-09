@@ -29,7 +29,7 @@ public class EnvironmentUtils {
 
     private static final String DEFAULT_SERVER_ADDRESS = "127.0.0.1";
 
-    private static final int DEFAULT_SERVER_PORT = 9500;
+    private static final int DEFAULT_SERVER_PORT = 7777;
 
     /* cached values */
     private static volatile int port = -1;

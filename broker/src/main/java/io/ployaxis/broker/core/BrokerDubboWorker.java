@@ -3,6 +3,9 @@ package io.ployaxis.broker.core;
 import io.polyaxis.api.utils.context.EnvironmentUtils;
 import io.polyaxis.api.utils.misc.LoggerScope;
 import io.polyaxis.network.DubboConstants;
+import io.quarkus.runtime.Startup;
+import jakarta.enterprise.context.ApplicationScoped;
+import jakarta.inject.Singleton;
 import org.apache.dubbo.config.ApplicationConfig;
 import org.apache.dubbo.config.bootstrap.DubboBootstrap;
 import org.slf4j.Logger;
@@ -12,6 +15,8 @@ import org.slf4j.Logger;
 /// @author github.com/MoritzArena
 /// @date 2025/07/08
 /// @since 1.0
+@Startup
+@Singleton
 public class BrokerDubboWorker {
 
     private static final Logger LOGGER = LoggerScope.DUBBO;
